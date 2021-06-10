@@ -22,6 +22,8 @@ if [ -d "./${REPO_FOLDER}" ]; then
     cd "./${REPO_FOLDER}"
     git status
 
+    echo "\nSet Local Account"
+    echo "=========================================="
     read -p 'user.name: ' username
     read -p 'user.email: ' useremail
 
