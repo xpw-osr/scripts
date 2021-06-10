@@ -12,9 +12,8 @@ function check_result() {
   fi
 }
 
-# MSG=$(git clone "${URL}")
-# check_result $? ${MSG}
-echo "Mock clone repo from git"
+MSG=$(git clone "${URL}")
+check_result $? ${MSG}
 
 read -p 'user.name: ' username
 read -p 'user.email: ' useremail
