@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+export SCRIPTS_HOME=$( dirname -- "${BASH_SOURCE[0]:-$0}"; )
+
+alias gc=$SCRIPTS_HOME/git/gc.sh
