@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 
+alias l='ls -FG'
+alias ll='l -l'
+alias la='l -A'
+alias lla='ll -A'
+
 export SCRIPTS_HOME=$( dirname -- "${BASH_SOURCE[0]:-$0}"; )
 
 alias gc=$SCRIPTS_HOME/git/gc.sh
