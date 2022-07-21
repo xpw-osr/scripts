@@ -9,3 +9,5 @@ export SCRIPTS_HOME=$( dirname -- "${BASH_SOURCE[0]:-$0}"; )
 
 alias gc=$SCRIPTS_HOME/git/gc.sh
 alias gcs=$SCRIPTS_HOME/git/gcs.sh
+alias repo-reset=$SCRIPTS_HOME/repo/reset.sh
+alias fc=$SCRIPTS_HOME/shell/findcontent.sh
