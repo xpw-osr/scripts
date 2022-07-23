@@ -3,6 +3,18 @@ curProject=
 
 STATUS_FILE='./.repo.status.tmp'
 
+show_result_message() {
+    RET=$1
+    SUCCEED_MSG="$2"
+    FAILURE_MSG="$3"
+
+    if [[ "${RET}" == "0" ]]; then
+        echo "${SUCCEED_MSG}"
+    else
+        echo "${FAILURE_MSG}"
+    fi
+}
+
 repo status > "${STATUS_FILE}"
 if [[ "$?" != '0' ]]; then
     echo 'Error: failed to collect status of repo'
@@ -24,27 +36,19 @@ cat "${STATUS_FILE}" | while read line; do
 
         echo -n "  ${path}"
         if [[ "${flag}" == "--" ]]; then
-            ## TODO: need check the path is file or dir
-            rm -f "${path}"
-            if [[ "$?" == "0" ]]; then
-                echo ' --- removed'
+            if [ -d "${path}" ]; then
+                rm -rf "${curDir}/${path}"
+                show_result_message $? ' --- removed' ' --- failed to remove'
             else
-                echo ' --- failed to remove'
+                rm -f "${curDir}/${path}"
+                show_result_message $? ' --- removed' ' --- failed to remove'
             fi
         elif [[ "${flag}" == "-m" ]]; then
             git checkout -f "${path}"
-            if [[ "$?" == "0" ]]; then
-                echo ' --- removed'
-            else
-                echo ' --- failed to remove'
-            fi
+            show_result_message $? ' --- checked out' ' --- failed to checked out'
         elif [[ "${flag}" == "-d" ]]; then
             git checkout -f "${path}"
-            if [[ "$?" == "0" ]]; then
-                echo ' --- removed'
-            else
-                echo ' --- failed to remove'
-            fi
+            show_result_message $? ' --- checked out' ' --- failed to checked out'
         fi
     fi
 done
