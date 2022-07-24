@@ -7,7 +7,16 @@ alias lla='ll -A'
 
 export SCRIPTS_HOME=$( dirname -- "${BASH_SOURCE[0]:-$0}"; )
 
+# git
 alias gc=$SCRIPTS_HOME/git/gc.sh
 alias gcs=$SCRIPTS_HOME/git/gcs.sh
+
+# repo
 alias repo-reset=$SCRIPTS_HOME/repo/reset.sh
+
+# shell
 alias fc=$SCRIPTS_HOME/shell/findcontent.sh
+
+alias sbm=$SCRIPTS_HOME/shell/switch-boot-mode.sh
+alias sbmm='sbm multi-user.target'  # change boot mode to text mode
+alias sbmg='sbm graphical.target'   # change boot mode to graphical mode
