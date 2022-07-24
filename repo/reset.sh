@@ -54,4 +54,4 @@ cat "${STATUS_FILE}" | while read line; do
 done
 cd "${curDir}"
 
-#rm -f "${STATUS_FILE}"
+rm -f "${STATUS_FILE}"
